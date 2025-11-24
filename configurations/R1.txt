@@ -1,0 +1,45 @@
+
+hostname R1
+
+interface Loopback0
+ip address 10.1.1.1 255.255.255.255
+
+interface Loopback1
+ip address 48.73.239.11 255.255.255.255
+
+
+interface GigabitEthernet1/0
+ip address 10.1.2.1 255.255.255.252 
+no shutdown
+
+interface GigabitEthernet2/0
+ip address 10.1.3.1 255.255.255.252 
+no shutdown
+
+interface GigabitEthernet4/0
+ip address 48.73.240.1 255.255.255.252
+no shutdown
+
+
+router ospf 1
+router-id 10.1.1.1
+passive-interface Loopback0
+passive-interface Loopback1
+
+network 10.1.1.1 0.0.0.0 area 0
+network 10.1.2.0 0.0.0.3 area 0
+network 10.1.3.0 0.0.0.3 area 0
+
+
+end
+write memory
+
+
+
+----
+
+
+Validation:
+
+ping 10.1.2.2
+traceroute 10.1.2.2

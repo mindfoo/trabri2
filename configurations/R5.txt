@@ -1,0 +1,38 @@
+
+hostname R5
+
+interface Loopback0
+ip address 10.5.5.5 255.255.255.255
+
+interface Loopback1
+ip address 48.73.239.55 255.255.255.255
+
+interface GigabitEthernet1/0
+ip address 64.112.0.2 255.255.255.252
+no shutdown
+
+interface GigabitEthernet3/0
+ip address 10.3.5.2 255.255.255.252
+no shutdown
+
+router ospf 1
+router-id 10.5.5.5
+passive-interface Loopback0
+passive-interface Loopback1
+network 10.5.5.5 0.0.0.0 area 0
+network 10.3.5.0 0.0.0.3 area 0
+
+
+end
+write memory
+
+
+
+----
+
+
+Validation:
+
+ping 10.1.2.2
+
+traceroute 10.1.2.2

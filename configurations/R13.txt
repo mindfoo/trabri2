@@ -1,0 +1,24 @@
+hostname R13
+
+interface Loopback0
+ip address 10.13.13.13 255.255.255.255
+
+
+interface Loopback1
+ip address 158.23.228.113 255.255.255.255
+
+interface FastEthernet0/0
+ip address 46.88.20.6 255.255.255.252
+no shutdown
+
+interface GigabitEthernet1/0
+ip address 158.23.228.2 255.255.255.252
+no shutdown
+
+router ospf 1
+router-id 10.13.13.13
+passive-interface Loopback0
+network 10.13.13.13 0.0.0.0 area 0
+
+end
+write memory

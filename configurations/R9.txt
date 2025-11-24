@@ -1,0 +1,24 @@
+hostname R9
+
+interface Loopback0
+ip address 10.9.9.9 255.255.255.255
+
+interface Loopback1
+ip address 130.41.47.99 255.255.255.255
+
+interface FastEthernet0/0
+ip address 130.41.46.10 255.255.255.252
+no shutdown
+
+interface FastEthernet1/0
+ip address 130.41.46.6 255.255.255.252
+no shutdown
+
+router ospf 1
+router-id 10.9.9.9
+passive-interface Loopback0
+passive-interface Loopback1
+network 10.9.9.9 0.0.0.0 area 0
+
+end
+write memory

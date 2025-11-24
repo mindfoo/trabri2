@@ -1,0 +1,32 @@
+hostname R14
+
+interface Loopback0
+ip address 10.14.14.14 255.255.255.255
+
+interface Loopback1
+ip address 64.96.0.114 255.255.255.255
+
+interface FastEthernet0/0
+ip address 64.96.0.2 255.255.255.252
+no shutdown
+
+interface GigabitEthernet1/0
+ip address 64.112.0.1 255.255.255.252
+no shutdown
+
+interface GigabitEthernet3/0
+ip address 64.112.0.9 255.255.255.252
+no shutdown
+
+interface GigabitEthernet5/0
+ip address 64.112.0.5 255.255.255.252
+no shutdown
+
+router ospf 1
+router-id 10.14.14.14
+passive-interface Loopback0
+passive-interface Loopback1
+network 10.14.14.14 0.0.0.0 area 0
+
+end
+write memory

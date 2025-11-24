@@ -1,0 +1,45 @@
+
+hostname R6
+
+interface Loopback0
+ip address 10.6.6.6 255.255.255.255
+
+interface Loopback1
+ip address 48.73.239.66 255.255.255.255
+
+interface FastEthernet0/0
+ip address 48.73.240.17 255.255.255.252
+no shutdown
+
+interface GigabitEthernet1/0
+ip address 48.73.240.13 255.255.255.252
+no shutdown
+
+interface GigabitEthernet2/0
+ip address 48.73.240.21 255.255.255.252
+no shutdown
+
+interface GigabitEthernet3/0
+ip address 10.4.6.2 255.255.255.252
+no shutdown
+
+router ospf 1
+router-id 10.6.6.6
+passive-interface Loopback0
+passive-interface Loopback1
+network 10.6.6.6 0.0.0.0 area 0
+network 10.4.6.0 0.0.0.3 area 0
+
+end
+write memory
+
+
+
+----
+
+
+Validation:
+
+ping 10.1.2.2
+
+traceroute 10.1.2.2

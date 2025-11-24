@@ -1,0 +1,9 @@
+
+hostname Server1
+
+interface Ethernet0
+ip address 130.41.46.1 255.255.255.252
+no shutdown
+
+
+end
