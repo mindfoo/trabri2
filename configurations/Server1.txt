@@ -1,9 +1,4 @@
+set pcname Server1
 
-hostname Server1
-
-interface Ethernet0
-ip address 130.41.46.1 255.255.255.252
-no shutdown
-
-
-end
+ip 130.41.46.1/30 130.41.46.2
+save

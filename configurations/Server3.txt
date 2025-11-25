@@ -1,7 +1,4 @@
-hostname Server3
-
-interface Ethernet0
-ip address 64.96.0.1 255.255.255.252
-no shutdown
-
-end
+set pcname Server3
+ip 64.96.0.1/30 64.96.0.2
+	
+save

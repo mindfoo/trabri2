@@ -1,3 +1,6 @@
+enable 
+conf t 
+
 hostname R16
 
 interface Loopback0

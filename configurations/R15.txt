@@ -1,3 +1,6 @@
+enable 
+conf t 
+
 hostname R15
 
 interface Loopback0

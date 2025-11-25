@@ -1,3 +1,5 @@
+enable
+conf t
 
 hostname R2
 
@@ -30,14 +32,3 @@ network 10.2.4.0 0.0.0.3 area 0
 
 end
 write memory
-
-
-
-----
-
-
-Validation:
-
-ping 10.1.2.2
-
-traceroute 10.1.2.2
