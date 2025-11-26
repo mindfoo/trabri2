@@ -1,3 +1,9 @@
+
+______________
+
+Fase 1 - AREA VERMELHA
+______________
+
 enable 
 conf t 
 
@@ -34,3 +40,31 @@ network 10.14.14.14 0.0.0.0 area 0
 
 end
 write memory
+
+
+
+______________
+
+Fase 2 - AREA VERMELHA
+______________
+
+
+enable
+conf t
+
+router bgp 701
+
+bgp router-id 10.14.14.14
+bgp log-neighbor-changes
+
+neighbor 64.112.0.2 remote-as 1273
+neighbor 64.112.0.2 soft-reconfiguration inbound
+
+neighbor 64.112.0.10 remote-as 4637
+neighbor 64.112.0.10 soft-reconfiguration inbound
+
+neighbor 64.112.0.6 remote-as 17390
+neighbor 64.112.0.6 soft-reconfiguration inbound
+
+end
+wr

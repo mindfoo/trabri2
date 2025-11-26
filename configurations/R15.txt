@@ -1,3 +1,8 @@
+______________
+
+Fase 1 - AREA VERDE ESCURO
+______________
+
 enable 
 conf t 
 
@@ -38,3 +43,31 @@ network 10.15.15.15 0.0.0.0 area 0
 
 end
 write memory
+
+
+
+______________
+
+Fase 2 - AREA VERDE ESCURO
+______________
+
+
+enable
+conf t
+
+router bgp 4637
+
+bgp router-id 10.15.15.15
+bgp log-neighbor-changes
+
+neighbor 48.73.240.13 remote-as 1273
+neighbor 48.73.240.13 soft-reconfiguration inbound
+
+neighbor 64.112.0.9 remote-as 701
+neighbor 64.112.0.9 soft-reconfiguration inbound
+
+neighbor 211.176.129.2 remote-as 5511
+neighbor 211.176.129.2 soft-reconfiguration inbound
+
+end
+wr
