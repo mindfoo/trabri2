@@ -25,6 +25,7 @@ ip ospf network point-to-point
 no shutdown
 
 router ospf 1
+log-adjacency-changes
 router-id 10.4.4.4
 passive-interface Loopback0
 passive-interface Loopback1

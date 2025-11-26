@@ -28,6 +28,7 @@ ip address 46.88.20.1 255.255.255.252
 no shutdown
 
 router ospf 1
+log-adjacency-changes
 router-id 10.10.10.10
 passive-interface Loopback0
 passive-interface Loopback1

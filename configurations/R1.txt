@@ -27,6 +27,7 @@ no shutdown
 
 
 router ospf 1
+log-adjacency-changes
 router-id 10.1.1.1
 passive-interface Loopback0
 passive-interface Loopback1
@@ -41,9 +42,9 @@ write memory
 
 
 
-----
 
 
+_____________
 Validation:
 
 ping 10.1.2.2
