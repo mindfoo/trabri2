@@ -27,6 +27,10 @@ interface GigabitEthernet4/0
 ip address 46.88.20.1 255.255.255.252
 no shutdown
 
+interface GigabitEthernet5/0
+ip address 48.73.240.18 255.255.255.252
+no shutdown
+
 router ospf 1
 log-adjacency-changes
 router-id 10.10.10.10

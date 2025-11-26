@@ -1,0 +1,20 @@
+enable 
+conf t 
+
+hostname BadGuy
+
+interface Loopback0
+ip address 10.66.66.66 255.255.255.255
+
+interface GigabitEthernet4/0
+ip address 211.176.129.6 255.255.255.252
+no shutdown
+
+router ospf 1
+log-adjacency-changes
+router-id 10.66.66.66
+passive-interface Loopback0
+network 10.66.66.66 0.0.0.0 area 0
+
+end
+write memory

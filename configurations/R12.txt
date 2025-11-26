@@ -23,20 +23,23 @@ ip address 10.10.12.2 255.255.255.252
 ip ospf network point-to-point
 no shutdown
 
-interface GigabitEthernet5/0
-ip address 48.73.240.18 255.255.255.252
-no shutdown
 
 router ospf 1
 log-adjacency-changes
 router-id 10.12.12.12
 passive-interface Loopback0
 passive-interface Loopback1
+
+! R10 e R11 são ABR entao estão simultaneamente na area 0 ! e 1, as interfaces internas sao todas area 0 e só as 
+! ligadas ao exterior é que sao area 1
+! REVER ESTA CONFIG BGP
+
 ! Area 1 is a stub 
 area 1 stub
 network 10.12.12.12 0.0.0.0 area 0
 network 10.11.12.0 0.0.0.3 area 0
 network 10.10.12.0 0.0.0.3 area 0
+
 ! Interface toward Server LAN (46.87.162.0/24)
 network 46.87.162.0 0.0.0.3 area 1
 

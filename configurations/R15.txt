@@ -55,6 +55,26 @@ ______________
 enable
 conf t
 
+! anunciar rotas estáticas para null
+
+ip route 211.176.128.0/24 255.255.255.0 Null0
+ip route 211.176.129.0/24 255.255.255.0 Null0 
+ip route 211.176.130.0/24 255.255.255.0 Null0
+ip route 211.176.130.0/23 255.255.254.0 Null0
+ip route 211.176.132.0/24 255.255.255.0 Null0
+ip route 211.176.135.0/24 255.255.255.0 Null0
+ip route 211.176.136.0/24 255.255.255.0 Null0
+ip route 211.176.137.0/24 255.255.255.0 Null0
+ip route 211.176.138.0/24 255.255.255.0 Null0
+ip route 211.176.139.0/24 255.255.255.0 Null0
+ip route 211.176.136.0/22 255.255.252.0 Null0
+ip route 211.176.140.0/24 255.255.255.0 Null0
+ip route 211.176.141.0/24 255.255.255.0 Null0
+ip route 211.176.142.0/24 255.255.255.0 Null0
+
+
+! configuração BGP
+
 router bgp 4637
 
 bgp router-id 10.15.15.15
@@ -68,6 +88,10 @@ neighbor 64.112.0.9 soft-reconfiguration inbound
 
 neighbor 211.176.129.2 remote-as 5511
 neighbor 211.176.129.2 soft-reconfiguration inbound
+
+! Bad guy
+neighbor 211.176.128.2 remote-as 1
+neighbor 211.176.128.2 soft-reconfiguration inbound
 
 end
 wr

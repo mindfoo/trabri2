@@ -52,6 +52,14 @@ ______________
 enable
 conf t
 
+! anunciar rotas estáticas para null
+
+ip route 64.96.0.0 255.240.0.0 Null0
+ip route 64.112.0.0 255.240.0.0 Null0 
+ip route 65.0.204.0 255.255.255.0 Null0
+
+
+! configuração BGP
 router bgp 701
 
 bgp router-id 10.14.14.14

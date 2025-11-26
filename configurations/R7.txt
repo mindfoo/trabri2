@@ -1,3 +1,8 @@
+______________
+
+Fase 1 - AREA VERDE
+______________
+
 enable 
 conf t
 
@@ -36,3 +41,31 @@ network 10.7.8.0 0.0.0.3 area 0
 
 end
 write memory
+
+______________
+
+Fase 2 - AREA VERDE
+______________
+
+
+enable
+conf t
+
+! anunciar rotas estáticas para null
+
+ip route 130.41.47.0/24 255.255.255.0 Null0
+
+! configuração BGP
+router bgp 64513
+
+bgp router-id 10.9.9.9
+bgp log-neighbor-changes
+
+neighbor 130.41.46.9 remote-as 17390
+neighbor 130.41.46.9 soft-reconfiguration inbound
+
+neighbor 130.41.46.5 remote-as 17390
+neighbor 130.41.46.5 soft-reconfiguration inbound
+
+end
+wr
