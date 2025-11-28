@@ -1,3 +1,8 @@
+______________
+
+Fase 1 - AREA CYAN
+______________
+
 enable 
 conf t 
 
@@ -26,3 +31,29 @@ network 10.13.13.13 0.0.0.0 area 0
 
 end
 write memory
+
+
+______________
+
+Fase 2 - AREA CYAN
+______________
+
+
+enable
+conf t
+
+! anunciar rotas estáticas para null
+
+ip route 158.23.228.0 255.255.255.0 Null0
+
+! configuração BGP
+router bgp 23344
+
+bgp router-id 10.13.13.13
+bgp log-neighbor-changes
+
+neighbor 46.88.20.5 remote-as 5511
+neighbor 46.88.20.5 soft-reconfiguration inbound
+
+end
+wr

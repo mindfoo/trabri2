@@ -1,3 +1,8 @@
+______________
+
+Fase 1 - AREA AZUL
+______________
+
 enable 
 conf t 
 
@@ -42,3 +47,33 @@ network 10.10.12.0 0.0.0.3 area 0
 
 end
 write memory
+
+______________
+
+Fase 2 - AREA AZUL
+______________
+
+
+enable
+conf t
+
+! anunciar rotas estáticas para null
+
+ip route 46.87.162.0 255.255.255.0 Null0
+ip route 46.88.20.0 255.255.255.0 Null0
+ip route 46.88.22.0 255.255.255.0 Null0
+ip route 46.89.36.0 255.255.255.0 Null0
+ip route 46.89.38.0 255.255.255.0 Null0
+ip route 46.92.2.0 255.255.255.0 Null0
+
+! configuração BGP
+router bgp 5511
+
+bgp router-id 10.10.10.10
+bgp log-neighbor-changes
+
+neighbor 46.88.20.5 remote-as 5511
+neighbor 46.88.20.5 soft-reconfiguration inbound
+
+end
+wr

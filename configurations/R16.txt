@@ -1,3 +1,8 @@
+______________
+
+Fase 1 - AREA ROSA
+______________
+
 enable 
 conf t 
 
@@ -23,3 +28,30 @@ network 10.16.16.16 0.0.0.0 area 0
 
 end
 write memory
+
+
+
+______________
+
+Fase 2 - AREA ROSA
+______________
+
+
+enable
+conf t
+
+! configuração BGP
+router bgp 20717
+
+bgp router-id 10.16.16.16
+bgp log-neighbor-changes
+
+neighbor 48.73.240.21 remote-as 1273
+neighbor 48.73.240.21 soft-reconfiguration inbound
+
+neighbor 48.88.20.1 remote-as 5511
+neighbor 48.88.20.1 soft-reconfiguration inbound
+
+end
+wr
+
