@@ -1,3 +1,8 @@
+______________
+
+Fase 1 - AREA AMARELA
+______________
+
 enable 
 conf t
 
@@ -42,3 +47,60 @@ network 10.3.5.0 0.0.0.3 area 0
 end
 write memory
 
+
+______________
+
+Fase 2 - AREA AMARELA
+______________
+
+
+enable
+conf t
+
+! anunciar rotas estáticas para null
+
+ip route 48.73.239.0 255.255.255.0 Null0
+ip route 48.73.240.0 255.255.252.0 Null0
+ip route 63.25.64.0 255.255.192.0 Null0
+
+
+
+router bgp 1273
+bgp router-id 10.3.3.3
+
+bgp cluster-id 1273    
+no synchronization
+
+bgp log-neighbor-changes
+
+! peer-group para clientes
+neighbor CLIENTS peer-group
+neighbor CLIENTS remote-as 1273
+neighbor CLIENTS update-source Loopback0
+neighbor CLIENTS route-reflector-client
+neighbor CLIENTS next-hop-self
+neighbor CLIENTS soft-reconfiguration inbound
+
+! peer-group para o outro RR
+neighbor RRs peer-group
+neighbor RRs remote-as 1273
+neighbor RRs update-source Loopback0
+neighbor RRs soft-reconfiguration inbound
+
+neighbor 10.1.1.1 peer-group CLIENTS
+neighbor 10.2.2.2 peer-group CLIENTS
+neighbor 10.5.5.5 peer-group CLIENTS
+neighbor 10.6.6.6 peer-group CLIENTS
+
+neighbor 10.4.4.4 peer-group RRs   ! R4
+
+neighbor 48.73.240.6 remote-as 17390
+neighbor 48.73.240.6 soft-reconfiguration inbound
+
+network 48.73.240.0 mask 255.255.252.0 
+network 48.73.239.0 mask 255.255.255.0
+network 63.25.64.0 mask 255.255.192.0 
+no auto-summary
+
+end
+wr

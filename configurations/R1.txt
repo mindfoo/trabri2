@@ -1,3 +1,7 @@
+______________
+
+Fase 1 - AREA AMARELA
+______________
 
 enable
 conf t
@@ -42,6 +46,53 @@ write memory
 
 
 
+______________
+
+Fase 2 - AREA AMARELA
+______________
+
+
+enable
+conf t
+
+! anunciar rotas estáticas para null
+
+ip route 48.73.239.0 255.255.255.0 Null0
+ip route 48.73.240.0 255.255.252.0 Null0
+ip route 63.25.64.0 255.255.192.0 Null0
+
+
+! configuração BGP
+router bgp 1273
+
+no synchronization 
+bgp router-id 10.1.1.1
+
+bgp log-neighbor-changes
+
+
+neighbor 10.3.3.3 remote-as 1273
+neighbor 10.3.3.3 update-source Loopback0
+neighbor 10.3.3.3 soft-reconfiguration inbound
+
+neighbor 10.4.4.4 remote-as 1273
+neighbor 10.4.4.4 update-source Loopback0
+neighbor 10.4.4.4 soft-reconfiguration inbound
+
+neighbor 10.2.2.2 remote-as 1273
+neighbor 10.2.2.2 update-source Loopback0
+neighbor 10.2.2.2 soft-reconfiguration inbound
+
+neighbor 48.73.240.2  remote-as 17390
+neighbor 48.73.240.2 soft-reconfiguration inbound
+
+network 48.73.240.0 mask 255.255.252.0 
+network 48.73.239.0 mask 255.255.255.0
+network 63.25.64.0 mask 255.255.192.0 
+no auto-summary
+
+end
+wr
 
 
 _____________

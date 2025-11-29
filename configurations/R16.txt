@@ -17,7 +17,7 @@ ip address 48.73.240.22 255.255.255.252
 no shutdown
 
 interface GigabitEthernet4/0
-ip address 48.88.20.2 255.255.255.252
+ip address 46.88.20.2 255.255.255.252
 no shutdown
 
 router ospf 1
@@ -44,13 +44,15 @@ conf t
 router bgp 20717
 
 bgp router-id 10.16.16.16
+no synchronization
 bgp log-neighbor-changes
 
 neighbor 48.73.240.21 remote-as 1273
 neighbor 48.73.240.21 soft-reconfiguration inbound
 
-neighbor 48.88.20.1 remote-as 5511
-neighbor 48.88.20.1 soft-reconfiguration inbound
+neighbor 46.88.20.1 remote-as 5511
+neighbor 46.88.20.1 soft-reconfiguration inbound
+
 
 end
 wr

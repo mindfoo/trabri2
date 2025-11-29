@@ -50,10 +50,15 @@ ip route 158.23.228.0 255.255.255.0 Null0
 router bgp 23344
 
 bgp router-id 10.13.13.13
+no synchronization
 bgp log-neighbor-changes
 
 neighbor 46.88.20.5 remote-as 5511
 neighbor 46.88.20.5 soft-reconfiguration inbound
+
+network 158.23.228.0 mask 255.255.255.0
+
+no auto-summary
 
 end
 wr

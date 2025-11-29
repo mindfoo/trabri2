@@ -62,6 +62,7 @@ ip route 65.0.204.0 255.255.255.0 Null0
 router bgp 701
 
 bgp router-id 10.14.14.14
+no synchronization
 bgp log-neighbor-changes
 
 neighbor 64.112.0.2 remote-as 1273
@@ -72,6 +73,13 @@ neighbor 64.112.0.10 soft-reconfiguration inbound
 
 neighbor 64.112.0.6 remote-as 17390
 neighbor 64.112.0.6 soft-reconfiguration inbound
+
+network 64.96.0.114 mask 255.255.255.255 
+network 64.96.0.0 mask 255.240.0.0 
+network 64.112.0.0 mask 255.240.0.0 
+network 65.0.204.0 mask 255.255.255.0 
+
+no auto-summary
 
 end
 wr

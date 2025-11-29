@@ -44,12 +44,13 @@ conf t
 
 ! anunciar rotas estáticas para null
 
-ip route 130.41.47.0/24 255.255.255.0 Null0
+ip route 130.41.47.0 255.255.255.0 Null0
 
 ! configuração BGP
 router bgp 64513
 
 bgp router-id 10.9.9.9
+no synchronization
 bgp log-neighbor-changes
 
 neighbor 130.41.46.9 remote-as 17390
@@ -57,6 +58,9 @@ neighbor 130.41.46.9 soft-reconfiguration inbound
 
 neighbor 130.41.46.5 remote-as 17390
 neighbor 130.41.46.5 soft-reconfiguration inbound
+
+network 130.41.47.0 mask 255.255.255.0 
+no auto-summary
 
 end
 wr
