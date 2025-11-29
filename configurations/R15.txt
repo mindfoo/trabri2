@@ -40,6 +40,7 @@ router-id 10.15.15.15
 passive-interface Loopback0
 passive-interface Loopback1
 network 10.15.15.15 0.0.0.0 area 0
+network 211.176.128.1 0.0.0.3 area 0
 
 end
 write memory
@@ -94,6 +95,8 @@ neighbor 211.176.129.2 soft-reconfiguration inbound
 neighbor 211.176.129.6 remote-as 1
 neighbor 211.176.129.6 soft-reconfiguration inbound
 
+network 211.176.128.115 mask 255.255.255.255
+network 211.176.128.0 mask 255.255.255.252
 network 211.176.128.1 mask 255.255.255.0 
 network 211.176.128.0 mask 255.240.0.0 
 network 211.176.129.0 mask 255.255.255.0 

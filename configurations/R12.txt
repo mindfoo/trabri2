@@ -92,6 +92,7 @@ network 46.88.22.0 mask 255.255.255.0
 network 46.89.36.0 mask 255.255.255.0
 network 46.89.38.0 mask 255.255.255.0
 network 46.92.2.0 mask 255.255.255.0
+network 46.87.162.112 mask 255.255.255.255
 
 no auto-summary
 

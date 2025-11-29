@@ -70,21 +70,19 @@ bgp router-id 10.1.1.1
 
 bgp log-neighbor-changes
 
+neighbor iBGP peer-group
+neighbor iBGP remote-as 1273
+neighbor iBGP next-hop-self
+neighbor iBGP update-source Loopback0
+neighbor iBGP soft-reconfiguration inbound
 
-neighbor 10.3.3.3 remote-as 1273
-neighbor 10.3.3.3 update-source Loopback0
-neighbor 10.3.3.3 soft-reconfiguration inbound
-
-neighbor 10.4.4.4 remote-as 1273
-neighbor 10.4.4.4 update-source Loopback0
-neighbor 10.4.4.4 soft-reconfiguration inbound
-
-neighbor 10.2.2.2 remote-as 1273
-neighbor 10.2.2.2 update-source Loopback0
-neighbor 10.2.2.2 soft-reconfiguration inbound
+neighbor 10.3.3.3 peer-group iBGP  
+neighbor 10.4.4.4 peer-group iBGP
 
 neighbor 48.73.240.2  remote-as 17390
 neighbor 48.73.240.2 soft-reconfiguration inbound
+
+network 48.73.239.11 mask 255.255.255.255
 
 network 48.73.240.0 mask 255.255.252.0 
 network 48.73.239.0 mask 255.255.255.0

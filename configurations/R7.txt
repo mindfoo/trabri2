@@ -75,6 +75,7 @@ neighbor 64.112.0.5 soft-reconfiguration inbound
 neighbor 48.73.240.5  remote-as 1273
 neighbor 48.73.240.5 soft-reconfiguration inbound
 
+network 130.41.46.77 mask 255.255.255.255
 network 130.41.46.0 mask 255.255.255.0 
 no auto-summary
 

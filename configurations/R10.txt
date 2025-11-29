@@ -73,6 +73,7 @@ bgp router-id 10.10.10.10
 no synchronization
 bgp log-neighbor-changes
 
+
 neighbor 46.88.20.2 remote-as 20717
 neighbor 46.88.20.2 soft-reconfiguration inbound
 
@@ -88,6 +89,7 @@ neighbor 10.12.12.12 remote-as 5511
 neighbor 10.12.12.12 update-source Loopback0
 neighbor 10.12.12.12 next-hop-self
 neighbor 10.12.12.12 soft-reconfiguration inbound
+
 
 network 46.87.162.0 mask 255.255.255.0
 network 46.88.20.0 mask 255.255.255.0

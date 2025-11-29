@@ -28,6 +28,7 @@ log-adjacency-changes
 router-id 10.13.13.13
 passive-interface Loopback0
 network 10.13.13.13 0.0.0.0 area 0
+network 158.23.228.0 0.0.0.0 area 0
 
 end
 write memory
