@@ -31,22 +31,23 @@ no shutdown
 
 
 router ospf 1
-log-adjacency-changes
 router-id 10.12.12.12
-passive-interface Loopback0
+log-adjacency-changes
 
-! R10 e R11 são ABR entao estão simultaneamente na area 0 ! e 1, as interfaces internas sao todas area 0 e só as 
-! ligadas ao exterior é que sao area 1
-! REVER ESTA CONFIG BGP
+passive-interface Loopback0
+passive-interface Loopback1
+
 
 ! Area 1 is a stub 
 area 1 stub
+
+! Interfaces toward R10 and R11
 network 10.12.12.12 0.0.0.0 area 1
-network 10.11.12.0 0.0.0.3 area 0
-network 10.10.12.0 0.0.0.3 area 0
+network 10.11.12.0 0.0.0.3 area 1
+network 10.10.12.0 0.0.0.3 area 1
 
 ! Interface toward Server LAN (46.87.162.0/24)
-network 46.87.162.0 0.0.0.3 area 1
+network 46.87.162.0 0.0.0.255 area 1
 
 end
 write memory

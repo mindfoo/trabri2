@@ -37,13 +37,23 @@ ip address 48.73.240.18 255.255.255.252
 no shutdown
 
 router ospf 1
-log-adjacency-changes
 router-id 10.10.10.10
+log-adjacency-changes
+
 passive-interface Loopback0
 passive-interface Loopback1
-network 10.10.10.10 0.0.0.0 area 0
+
+! Area 1 is a stub 
+area 1 stub
+
+! Loopback0 in Area 1
+network 10.10.10.10 0.0.0.0 area 1
+
+! Backbone link to R11 (Area 0)
 network 10.10.11.0 0.0.0.3 area 0
-network 10.10.12.0 0.0.0.3 area 0
+
+! Link to R12 (Area 1)
+network 10.10.12.0 0.0.0.3 area 1
 
 end
 write memory
